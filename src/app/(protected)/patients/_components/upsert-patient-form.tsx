@@ -211,31 +211,6 @@ const UpsertPatientForm = ({
           />
         </FieldGroup>
         <DialogFooter>
-          {patient && (
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive">
-                  <Trash />
-                  Excluir
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>
-                    Tem certeza que deseja excluir este paciente?
-                  </AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Esta ação não pode ser revertida. Isso irá excluir o
-                    paciente e todas as suas informações.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction>Excluir</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          )}
           <Button type="submit" disabled={upsertPatientAction.isPending}>
             {upsertPatientAction.isPending ? (
               <Loader2 className="mr-2 w-4 h-4 animate-spin" />
