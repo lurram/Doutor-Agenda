@@ -1,5 +1,19 @@
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
+import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
+import { toast } from "sonner";
+import { deletePatient } from "@/actions/delete-patient";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import {
@@ -15,11 +29,29 @@ import UpsertPatientForm from "./upsert-patient-form";
 
 interface PatientsTableActionsProps {
   patient: typeof patientsTable.$inferSelect;
+  onSuccess?: () => void;
 }
 
-const PatientsTableActions = ({ patient }: PatientsTableActionsProps) => {
+const PatientsTableActions = ({
+  patient,
+  onSuccess,
+}: PatientsTableActionsProps) => {
   const [upsertPatientsDialogIsOpen, setUpsertPatientsDialogIsOpen] =
     useState(false);
+
+  const deletePatientAction = useAction(deletePatient, {
+    onSuccess: () => {
+      toast.success("Paciente deletado com sucesso.");
+      onSuccess?.();
+    },
+    onError: () => "Erro ao deletar paciente.",
+  });
+
+  const handleDeletePatientActionClick = () => {
+    if (!patient) return;
+    deletePatientAction.execute({ id: patient.id });
+  };
+
   return (
     <Dialog
       open={upsertPatientsDialogIsOpen}
@@ -38,10 +70,36 @@ const PatientsTableActions = ({ patient }: PatientsTableActionsProps) => {
             <Edit />
             Editar
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Trash />
-            Excluir
-          </DropdownMenuItem>
+          {patient && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <DropdownMenuItem
+                  variant="destructive"
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  <Trash />
+                  Excluir
+                </DropdownMenuItem>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    Tem certeza que deseja excluir este paciente?
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Esta ação não pode ser revertida. Isso irá excluir o
+                    paciente e todas as suas informações.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleDeletePatientActionClick}>
+                    Excluir
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 
