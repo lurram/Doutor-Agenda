@@ -69,7 +69,7 @@ const formSchema = z
   );
 
 interface UpsertDoctorFormProps {
-  onSuccess: () => void;
+  onSuccess?: () => void;
 }
 
 const UpsertDoctorForm = ({ onSuccess }: UpsertDoctorFormProps) => {
@@ -108,7 +108,7 @@ const UpsertDoctorForm = ({ onSuccess }: UpsertDoctorFormProps) => {
         <DialogTitle>Adicionar Médico</DialogTitle>
         <DialogDescription>Preencha os dados do médico</DialogDescription>
       </DialogHeader>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FieldGroup>
           <Controller
             name="name"
