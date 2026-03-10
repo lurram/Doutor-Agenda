@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Trash } from "lucide-react";
 import { useAction } from "next-safe-action/hooks";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { NumericFormat } from "react-number-format";
 import { toast } from "sonner";
@@ -20,7 +21,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -82,11 +82,16 @@ const formSchema = z
   );
 
 interface UpsertDoctorFormProps {
-  doctor: typeof doctorsTable.$inferSelect;
+  isOpen: boolean;
+  doctor?: typeof doctorsTable.$inferSelect;
   onSuccess?: () => void;
 }
 
-const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
+const UpsertDoctorForm = ({
+  doctor,
+  onSuccess,
+  isOpen,
+}: UpsertDoctorFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     shouldUnregister: true,
@@ -102,6 +107,22 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
       availableToTime: doctor?.availableToTime ?? "",
     },
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      form.reset({
+        name: doctor?.name ?? "",
+        specialty: doctor?.specialty ?? "",
+        appointmentsPrice: doctor?.appointmentPriceInCents
+          ? doctor?.appointmentPriceInCents / 100
+          : 0,
+        availableFromWeekday: doctor?.availableFromWeekday.toString() ?? "1",
+        availableToWeekday: doctor?.availableToWeekday.toString() ?? "5",
+        availableFromTime: doctor?.availableFromTime ?? "",
+        availableToTime: doctor?.availableToTime ?? "",
+      });
+    }
+  }, [isOpen, form, doctor]);
 
   const upsertDoctorAction = useAction(upsertDoctors, {
     onSuccess: () => {
@@ -133,6 +154,7 @@ const UpsertDoctorForm = ({ doctor, onSuccess }: UpsertDoctorFormProps) => {
       appointmentPriceInCents: values.appointmentsPrice * 100,
     });
   };
+
   return (
     <DialogContent>
       <DialogHeader>
