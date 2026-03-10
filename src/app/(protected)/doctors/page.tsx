@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import {
@@ -10,8 +9,8 @@ import {
   PageHeaderContent,
   PageTitle,
 } from "@/components/page-container";
-import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
+import AddDoctorButton from "./components/add-doctor-button";
 
 const DoctorsPage = async () => {
   const session = await auth.api.getSession({
@@ -35,10 +34,7 @@ const DoctorsPage = async () => {
         </PageHeaderContent>
 
         <PageActions>
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            Adicionar médico
-          </Button>
+          <AddDoctorButton />
         </PageActions>
       </PageHeader>
 
