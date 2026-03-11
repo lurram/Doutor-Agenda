@@ -325,6 +325,7 @@ const AddAppointmentForm = ({
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
+                  disabled={!isDateTimeEnabled || !selectedDate}
                 >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Selecione o horário" />
