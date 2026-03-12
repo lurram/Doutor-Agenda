@@ -1,15 +1,24 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import {
+  PageActions,
+  PageContainer,
+  PageContent,
+  PageDescription,
+  PageHeader,
+  PageHeaderContent,
+  PageTitle,
+} from "@/components/page-container";
 import { auth } from "@/lib/auth";
-import SignOutButton from "./components/sign-out-button";
+import DatePicker from "./components/date-picker";
 
 const DashboardPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  if (!session) {
-    redirect("/authentication");
+  if (!session?.user) {
+    return redirect("/authentication");
   }
 
   if (!session.user.clinic) {
@@ -17,12 +26,22 @@ const DashboardPage = async () => {
   }
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <h1>{session?.user.name}</h1>
-      <h1>{session?.user.email}</h1>
-      <SignOutButton />
-    </div>
+    <PageContainer>
+      <PageHeader>
+        <PageHeaderContent>
+          <PageTitle>Dashboard</PageTitle>
+          <PageDescription>Bem-vindo ao seu dashboard</PageDescription>
+        </PageHeaderContent>
+
+        <PageActions>
+          <DatePicker />
+        </PageActions>
+      </PageHeader>
+
+      <PageContent>
+        <></>
+      </PageContent>
+    </PageContainer>
   );
 };
 
