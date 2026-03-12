@@ -14,7 +14,7 @@ import {
 import { db } from "@/db";
 import { appointmentsTable, doctorsTable, patientsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
-import AddAppointmentsButton from "./_components/add-appointments-buttons";
+import AddAppointmentsButton from "./_components/add-appointments-button";
 import { appointmentsTableColumns } from "./_components/table-columns";
 
 const AppointmentsPage = async () => {
