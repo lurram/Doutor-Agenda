@@ -7,7 +7,7 @@ import { parseAsIsoDate, useQueryState } from "nuqs";
 import type { DateRange } from "react-day-picker";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field } from "@/components/ui/field";
 import {
   Popover,
   PopoverContent,
@@ -31,10 +31,14 @@ export const DatePicker = () => {
 
   const handleDateSelect = (dateRange: DateRange | undefined) => {
     if (dateRange?.from) {
-      setFrom(dateRange.from);
+      setFrom(dateRange.from, {
+        shallow: false,
+      });
     }
     if (dateRange?.to) {
-      setTo(dateRange.to);
+      setTo(dateRange.to, {
+        shallow: false,
+      });
     }
   };
   const date = { from, to };
