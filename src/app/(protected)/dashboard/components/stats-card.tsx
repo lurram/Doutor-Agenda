@@ -1,6 +1,12 @@
 "use client";
 
-import { Calendar, DollarSign, User, Users2 } from "lucide-react";
+import {
+  Calendar,
+  CircleDollarSign,
+  DollarSign,
+  User,
+  Users2,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrencyInCents } from "@/helpers/currency";
 
@@ -21,7 +27,7 @@ const StatsCard = ({
     {
       label: "Faturamento",
       value: totalRevenue ? formatCurrencyInCents(totalRevenue) : "R$ 0,00",
-      icon: DollarSign,
+      icon: CircleDollarSign,
     },
     {
       label: "Agendamentos",
@@ -60,6 +66,14 @@ const StatsCard = ({
           </Card>
         );
       })}
+
+      {stats.length === 0 && (
+        <div className="flex items-center justify-center">
+          <p className="text-muted-foreground">
+            Nenhuma estatística encontrada
+          </p>
+        </div>
+      )}
     </div>
   );
 };

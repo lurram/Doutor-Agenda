@@ -29,6 +29,10 @@ const DoctorsPage = async () => {
     redirect("/clinic-form");
   }
 
+  if (!session.user.plan) {
+    redirect("/new-subscription");
+  }
+
   const doctors = await db.query.doctorsTable.findMany({
     where: eq(doctorsTable.clinicId, session.user.clinic.id),
   });
@@ -51,6 +55,12 @@ const DoctorsPage = async () => {
           {doctors.map((doctor) => (
             <DoctorCard doctor={doctor} key={doctor.id} />
           ))}
+
+          {doctors.length === 0 && (
+            <div className="col-span-3 text-center">
+              <p className="text-muted-foreground">Nenhum médico encontrado</p>
+            </div>
+          )}
         </div>
       </PageContent>
     </PageContainer>

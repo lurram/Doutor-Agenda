@@ -50,6 +50,12 @@ const TopDoctorsCard = ({ doctors }: DoctorsCardProps) => {
             </span>
           </div>
         ))}
+
+        {doctors.length === 0 && (
+          <div className="flex items-center justify-center">
+            <p className="text-muted-foreground">Nenhum médico encontrado</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

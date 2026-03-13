@@ -10,8 +10,17 @@ export default async function Home() {
     headers: await headers(),
   });
   if (!session) {
-    redirect("/login");
+    redirect("/authentication");
   }
+
+  if (!session.user.clinic) {
+    redirect("/clinic-form");
+  }
+
+  if (session.user.plan) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 p-6">
       <div className="mb-8 w-full max-w-3xl text-center">
@@ -37,7 +46,10 @@ export default async function Home() {
       </div>
 
       <div className="w-full max-w-md">
-        <SubscriptionPlan userEmail={session.user.email} />
+        <SubscriptionPlan
+          userEmail={session.user.email}
+          active={session.user.plan === "essential"}
+        />
       </div>
 
       <div className="mt-8 max-w-lg text-center">

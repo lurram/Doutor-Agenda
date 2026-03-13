@@ -86,6 +86,14 @@ const TopSpecialties = ({ topSpecialties }: TopSpecialtiesProps) => {
               </div>
             );
           })}
+
+          {topSpecialties.length === 0 && (
+            <div className="flex items-center justify-center">
+              <p className="text-muted-foreground">
+                Nenhuma especialidade encontrada
+              </p>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

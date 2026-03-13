@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useRef } from "react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -55,10 +56,16 @@ const items = [
   },
 ];
 
-export function AppSidebar() {
+export function AppSidebar({
+  onOpenChange,
+}: {
+  onOpenChange: (open: boolean) => void;
+}) {
   const session = authClient.useSession();
   const router = useRouter();
   const pathname = usePathname();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -68,8 +75,27 @@ export function AppSidebar() {
       },
     });
   };
+
+  const handleMouseEnter = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    onOpenChange(true);
+  };
+
+  const handleMouseLeave = () => {
+    timerRef.current = setTimeout(() => {
+      onOpenChange(false);
+    }, 1000);
+  };
+
   return (
-    <Sidebar>
+    <Sidebar
+      collapsible="icon"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <SidebarHeader className="p-4 border-b">
         <Image src="/logo.svg" alt="Doutor Agenda" width={136} height={28} />
       </SidebarHeader>

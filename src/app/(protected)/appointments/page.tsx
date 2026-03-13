@@ -30,8 +30,8 @@ const AppointmentsPage = async () => {
     redirect("/clinic-form");
   }
 
-  if (session.user.plan !== "essential") {
-    redirect("/subscription");
+  if (!session.user.plan) {
+    redirect("/new-subscription");
   }
 
   const [patients, doctors, appointments] = await Promise.all([

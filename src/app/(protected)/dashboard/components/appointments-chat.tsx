@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 dayjs.locale("pt-br");
 
-import { DollarSign } from "lucide-react";
+import { CircleDollarSign, DollarSign } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -62,7 +62,7 @@ const AppointmentsChart = ({
   return (
     <Card>
       <CardHeader className="flex flex-row items-center gap-2">
-        <DollarSign />
+        <CircleDollarSign />
         <CardTitle>Agendamentos e Faturamento</CardTitle>
       </CardHeader>
       <CardContent>
