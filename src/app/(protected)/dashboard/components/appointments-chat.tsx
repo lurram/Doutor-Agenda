@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 dayjs.locale("pt-br");
 
-import { CircleDollarSign, DollarSign } from "lucide-react";
+import { CircleDollarSign } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

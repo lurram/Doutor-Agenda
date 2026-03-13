@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Calendar,
-  CircleDollarSign,
-  DollarSign,
-  User,
-  Users2,
-} from "lucide-react";
+import { Calendar, CircleDollarSign, User, Users2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrencyInCents } from "@/helpers/currency";
 
