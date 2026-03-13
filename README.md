@@ -16,7 +16,6 @@
 - 🏢 **Multi-clínicas**: Gestão de múltiplas unidades sob a mesma plataforma.
 - 👨‍⚕️ **Gestão de Médicos**: Cadastro de profissionais, especialidades e horários de disponibilidade.
 - 📅 **Agendamento Inteligente**: Sistema dinâmico para marcação de consultas com controle de horários.
-- 👥 **Prontuário de Pacientes**: Cadastro completo e histórico de consultas.
 - 💳 **Assinaturas & Pagamentos**: Integração com Stripe para planos de assinatura e pagamentos recorrentes.
 - 📊 **Dashboard de Analytics**: Visualização de dados de atendimentos e faturamento via Recharts.
 - 🔐 **Autenticação Segura**: Implementação via Better Auth com suporte a múltiplos provedores.
@@ -35,7 +34,7 @@ O projeto utiliza o que há de mais moderno no ecossistema JavaScript/TypeScript
 ### Frontend & UI
 - **Tailwind CSS 4**: Estilização moderna e ultra-rápida.
 - **Shadcn UI & Radix UI**: Componentes acessíveis e altamente customizáveis.
-- **Phosphor Icons & Lucide React**: Conjunto de ícones consistentes.
+- **Lucide React**: Conjunto de ícones consistentes.
 - **Recharts**: Gráficos dinâmicos para o dashboard.
 - **TanStack React Query**: Gestão de estado assíncrono e cache.
 - **nuqs**: Gestão de estado baseada em URL.
@@ -58,7 +57,7 @@ O projeto utiliza o que há de mais moderno no ecossistema JavaScript/TypeScript
 ### Pré-requisitos
 - Node.js (v20 ou superior)
 - PostgreSQL
-- Gerenciador de pacotes (PNPM recomendado)
+- Gerenciador de pacotes (NPM recomendado)
 
 ### 1. Clonar e Instalar
 ```bash
@@ -70,10 +69,17 @@ npm install
 ### 2. Configurar Variáveis de Ambiente
 Crie um arquivo `.env` na raiz do projeto baseado no `.env.example`:
 ```env
-DATABASE_URL=postgres://user:password@localhost:5432/doutor_agenda
-BETTER_AUTH_SECRET=sua_chave_secreta
-STRIPE_SECRET_KEY=sua_chave_stripe
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=sua_chave_publica_stripe
+DATABASE_URL=
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_ESSENTIAL_PLAN_PRICE_ID=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_APP_URL=
+NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_URL=
 ```
 
 ### 3. Configurar o Banco de Dados
@@ -112,4 +118,4 @@ Este projeto está sob a licença [MIT](LICENSE).
 
 ---
 
-Desenvolvido com ❤️ por [Seu Nome/Empresa]
+Desenvolvido com ❤️ por [Lurram Santos]
