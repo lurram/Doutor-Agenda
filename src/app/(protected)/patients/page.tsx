@@ -15,7 +15,6 @@ import { db } from "@/db";
 import { patientsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
 import AddPatientButton from "./_components/add-patients-button";
-import PatientCard from "./_components/patient-card";
 import { patientsTableColumns } from "./_components/table-columns";
 
 const PatientPage = async () => {
