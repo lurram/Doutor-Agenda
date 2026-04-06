@@ -152,7 +152,7 @@ src/
 
 | Adquirir plano | Checkout Stripe |
 |:--------------:|:---------------:|
-| ![Adquirir plano](./screenshots/Adquirir_plano.png) | ![Pagamento Stripe](./screenshots/Stripe_-_Pagamento.png) |
+| ![Adquirir plano](./screenshots/Adquirir_plano.png) | ![Pagamento Stripe](./screenshots/Stripe_Pagamento.png) |
 ## 📄 Licença
 
 Este projeto está sob a licença [MIT](LICENSE).
