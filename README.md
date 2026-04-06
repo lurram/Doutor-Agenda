@@ -144,7 +144,7 @@ src/
 
 | Adicionar clínica | |
 |:-----------------:|-|
-| ![Adicionar clínica](./screenshots/Adicionar_Clinica.png) | |
+| ![Adicionar clínica](./screenshots/Adicionar_Clinica.png) |
 
 ---
 
