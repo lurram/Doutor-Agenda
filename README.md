@@ -112,6 +112,47 @@ src/
 
 ---
 
+## 📸 Screenshots
+
+> Uma visão geral das principais telas da plataforma.
+
+### 🔐 Autenticação
+
+| Criar conta | Login |
+|:-----------:|:-----:|
+| ![Cadastro](./screenshots/Cadastro.png) | ![Login](./screenshots/Login.png) |
+
+---
+
+### 🖥️ Aplicação
+
+| Dashboard | Dashboard com dados |
+|:---------:|:-------------------:|
+| ![Dashboard](./screenshots/Dashboard.png) | ![Dashboard com dados](./screenshots/Dashboard_com_dados.png) |
+
+| Médicos | Adicionar médico |
+|:-------:|:----------------:|
+| ![Médicos](./screenshots/Medicos.png) | ![Novo médico](./screenshots/Novo_Medico.png) |
+
+| Pacientes | Adicionar paciente |
+|:---------:|:-----------------:|
+| ![Pacientes](./screenshots/Pacientes.png) | ![Novo paciente](./screenshots/Novo_Paciente.png) |
+
+| Agendamentos | Novo agendamento |
+|:------------:|:----------------:|
+| ![Agendamentos](./screenshots/Agendamentos.png) | ![Novo agendamento](./screenshots/Novo_Agendamento.png) |
+
+| Adicionar clínica | |
+|:-----------------:|-|
+| ![Adicionar clínica](./screenshots/Adicionar_Clinica.png) | |
+
+---
+
+### 💳 Pagamento
+
+| Adquirir plano | Checkout Stripe |
+|:--------------:|:---------------:|
+| ![Adquirir plano](./screenshots/Adquirir_plano.png) | ![Pagamento Stripe](./screenshots/Stripe_-_Pagamento.png) |
 ## 📄 Licença
 
 Este projeto está sob a licença [MIT](LICENSE).
